@@ -380,12 +380,12 @@
       <elementName>Multiplexer</elementName>
       <elementAttributes>
         <entry>
-          <string>flipSelPos</string>
-          <boolean>true</boolean>
-        </entry>
-        <entry>
           <string>Bits</string>
           <int>32</int>
+        </entry>
+        <entry>
+          <string>flipSelPos</string>
+          <boolean>true</boolean>
         </entry>
       </elementAttributes>
       <pos x="-400" y="-720"/>
@@ -455,20 +455,20 @@
       <elementName>Splitter</elementName>
       <elementAttributes>
         <entry>
-          <string>Input Splitting</string>
-          <string>4</string>
-        </entry>
-        <entry>
           <string>mirror</string>
           <boolean>true</boolean>
         </entry>
         <entry>
-          <string>Output Splitting</string>
-          <string>1,1,1,1</string>
-        </entry>
-        <entry>
           <string>rotation</string>
           <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>Input Splitting</string>
+          <string>4</string>
+        </entry>
+        <entry>
+          <string>Output Splitting</string>
+          <string>1,1,1,1</string>
         </entry>
       </elementAttributes>
       <pos x="-240" y="-340"/>
@@ -1354,12 +1354,12 @@
       <elementName>Multiplexer</elementName>
       <elementAttributes>
         <entry>
-          <string>Bits</string>
-          <int>32</int>
-        </entry>
-        <entry>
           <string>Selector Bits</string>
           <int>4</int>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>32</int>
         </entry>
       </elementAttributes>
       <pos x="620" y="120"/>
@@ -2307,16 +2307,6 @@
       <elementName>Tunnel</elementName>
       <elementAttributes>
         <entry>
-          <string>NetName</string>
-          <string>done</string>
-        </entry>
-      </elementAttributes>
-      <pos x="680" y="-260"/>
-    </visualElement>
-    <visualElement>
-      <elementName>Tunnel</elementName>
-      <elementAttributes>
-        <entry>
           <string>rotation</string>
           <rotation rotation="2"/>
         </entry>
@@ -2360,11 +2350,6 @@
         </entry>
       </elementAttributes>
       <pos x="300" y="-360"/>
-    </visualElement>
-    <visualElement>
-      <elementName>Const</elementName>
-      <elementAttributes/>
-      <pos x="480" y="-260"/>
     </visualElement>
     <visualElement>
       <elementName>Tunnel</elementName>
@@ -2755,6 +2740,18 @@
 # reset, then start (IDLE -&gt; GEN -&gt; XOR)
 1 C 0 1 0 0 0 1 0 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X X X X X
 0 C 1 1 0 0 0 1 0 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X X X X 0
+# GEN: 11 more clocks while the block computes, in_ready = 0
+0 C 0 1 0 0 0 1 0 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X X X X 0
+0 C 0 1 0 0 0 1 0 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X X X X 0
+0 C 0 1 0 0 0 1 0 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X X X X 0
+0 C 0 1 0 0 0 1 0 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X X X X 0
+0 C 0 1 0 0 0 1 0 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X X X X 0
+0 C 0 1 0 0 0 1 0 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X X X X 0
+0 C 0 1 0 0 0 1 0 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X X X X 0
+0 C 0 1 0 0 0 1 0 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X X X X 0
+0 C 0 1 0 0 0 1 0 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X X X X 0
+0 C 0 1 0 0 0 1 0 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X X X X 0
+0 C 0 1 0 0 0 1 0 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X X X X 0
 0 C 0 1 0 0 0 1 0 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X X X X 1
 # word 0
 0 0 0 1 1 0 15 1 0x6964614c 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   0x9a352e6e 1 0 15 1
@@ -2804,8 +2801,19 @@
 # word 15
 0 0 0 1 1 0 15 1 0x6f20756f 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   0xd861089f 1 0 15 1
 0 C 0 1 1 0 15 1 0x6f20756f 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X X X X X
-# block 2: one GEN cycle, core not ready
+# block 2: 12 GEN clocks, core not ready
 0 0 0 1 1 0 15 1 0x20796c6e 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X 0 X X 0
+0 C 0 1 1 0 15 1 0x20796c6e 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X 0 X X 0
+0 C 0 1 1 0 15 1 0x20796c6e 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X 0 X X 0
+0 C 0 1 1 0 15 1 0x20796c6e 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X 0 X X 0
+0 C 0 1 1 0 15 1 0x20796c6e 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X 0 X X 0
+0 C 0 1 1 0 15 1 0x20796c6e 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X 0 X X 0
+0 C 0 1 1 0 15 1 0x20796c6e 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X 0 X X 0
+0 C 0 1 1 0 15 1 0x20796c6e 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X 0 X X 0
+0 C 0 1 1 0 15 1 0x20796c6e 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X 0 X X 0
+0 C 0 1 1 0 15 1 0x20796c6e 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X 0 X X 0
+0 C 0 1 1 0 15 1 0x20796c6e 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X 0 X X 0
+0 C 0 1 1 0 15 1 0x20796c6e 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X 0 X X 0
 0 C 0 1 1 0 15 1 0x20796c6e 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   X X X X X
 # word 16
 0 0 0 1 1 0 15 1 0x20796c6e 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c 0x00000000 0x4a000000 0x00000000   0xbf0dca07 1 0 15 1
@@ -2853,6 +2861,44 @@
       </elementAttributes>
       <pos x="720" y="-1120"/>
     </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>CLK</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-180" y="640"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>st\_gen</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-180" y="620"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>done</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-40" y="700"/>
+    </visualElement>
   </visualElements>
   <wires>
     <wire>
@@ -2866,10 +2912,6 @@
     <wire>
       <p1 x="240" y="-260"/>
       <p2 x="300" y="-260"/>
-    </wire>
-    <wire>
-      <p1 x="480" y="-260"/>
-      <p2 x="680" y="-260"/>
     </wire>
     <wire>
       <p1 x="-80" y="-900"/>
@@ -3678,6 +3720,10 @@
     <wire>
       <p1 x="-640" y="0"/>
       <p2 x="-640" y="40"/>
+    </wire>
+    <wire>
+      <p1 x="-80" y="700"/>
+      <p2 x="-40" y="700"/>
     </wire>
   </wires>
   <measurementOrdering/>
