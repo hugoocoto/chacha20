@@ -45,7 +45,7 @@
       <position x="598.1707" y="436.5366"/>
       <fromState reference="../../../states/state[2]"/>
       <toState reference="../../../states/state[3]"/>
-      <condition>done</condition>
+      <condition>done &amp; !(hs &amp; last)</condition>
     </transition>
     <transition>
       <values></values>
@@ -60,6 +60,13 @@
       <fromState reference="../../../states/state[3]"/>
       <toState reference="../../../states/state[2]"/>
       <condition>hs &amp; !last &amp; w15</condition>
+    </transition>
+    <transition>
+      <values></values>
+      <position x="300.0" y="420.0"/>
+      <fromState reference="../../../states/state[2]"/>
+      <toState reference="../../../states/state"/>
+      <condition>done &amp; hs &amp; last</condition>
     </transition>
   </transitions>
 </fsm>

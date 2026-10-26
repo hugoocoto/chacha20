@@ -63,6 +63,10 @@
           <string>wideShape</string>
           <boolean>true</boolean>
         </entry>
+        <entry>
+          <string>Inputs</string>
+          <int>3</int>
+        </entry>
       </elementAttributes>
       <pos x="20" y="0"/>
     </visualElement>
@@ -679,12 +683,91 @@
 0   C   0     1    0  0    0     0       0      1
 0   C   0     0    0  1    1     0       0      1
 
+# back to IDLE
+1   C   0     0    0  0    0     1       0      0
+# GEN: done together with the last word -&gt; IDLE (one-word message)
+0   C   1     0    0  0    0     0       1      0
+0   C   0     1    1  1    0     1       0      0
+# GEN: done together with a word that is not the last -&gt; XOR
+0   C   1     0    0  0    0     0       1      0
+0   C   0     1    1  0    0     0       0      1
+# GEN: done, last but no handshake -&gt; XOR
+0   C   0     0    1  1    0     1       0      0
+0   C   1     0    0  0    0     0       1      0
+0   C   0     1    0  1    0     0       0      1
+
 # reset from XOR
 1   C   0     0    0  0    0     1       0      0</dataString>
           </testData>
         </entry>
       </elementAttributes>
       <pos x="400" y="-160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>nhl</string>
+        </entry>
+      </elementAttributes>
+      <pos x="0" y="20"/>
+    </visualElement>
+    <visualElement>
+      <elementName>And</elementName>
+      <elementAttributes></elementAttributes>
+      <pos x="800" y="400"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>hs</string>
+        </entry>
+      </elementAttributes>
+      <pos x="780" y="400"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>last</string>
+        </entry>
+      </elementAttributes>
+      <pos x="780" y="440"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Not</elementName>
+      <elementAttributes></elementAttributes>
+      <pos x="880" y="420"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="0"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>nhl</string>
+        </entry>
+      </elementAttributes>
+      <pos x="940" y="420"/>
     </visualElement>
   </visualElements>
   <wires>
@@ -1135,6 +1218,26 @@
     <wire>
       <p1 x="-160" y="-80"/>
       <p2 x="-160" y="480"/>
+    </wire>
+    <wire>
+      <p1 x="0" y="20"/>
+      <p2 x="20" y="20"/>
+    </wire>
+    <wire>
+      <p1 x="780" y="400"/>
+      <p2 x="800" y="400"/>
+    </wire>
+    <wire>
+      <p1 x="780" y="440"/>
+      <p2 x="800" y="440"/>
+    </wire>
+    <wire>
+      <p1 x="860" y="420"/>
+      <p2 x="880" y="420"/>
+    </wire>
+    <wire>
+      <p1 x="920" y="420"/>
+      <p2 x="940" y="420"/>
     </wire>
   </wires>
   <measurementOrdering/>
