@@ -4,6 +4,12 @@ A ChaCha20 stream cipher ([RFC 8439](https://www.rfc-editor.org/info/rfc8439/))
 built in [Digital](https://github.com/hneemann/Digital). It encrypts one 32-bit
 word per clock. Decryption is the same operation.
 
+![image](images/Screenshot-2026-10-27_13:29:12.png)
+![image](images/Screenshot-2026-10-27_13:34:57.png)
+![image](images/Screenshot-2026-10-27_13:35:16.png)
+![image](images/Screenshot-2026-10-27_13:35:37.png)
+![image](images/Screenshot-2026-10-27_13:36:04.png)
+
 ## How it works
 
 ChaCha20 turns the key, a nonce and a block counter into 64 bytes of
