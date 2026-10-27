@@ -48,15 +48,16 @@ rising clock edge when both `valid` and `ready` are 1.
 | `out_valid` | 1 | `out_data` holds a word |
 | `out_last` | 1 | Copy of `in_last` |
 | `out_keep` | 4 | Copy of `in_keep` |
+| `error` | 1 | The block counter ran out (see below) |
 
 All words are **little-endian**: `k0` holds key bytes 0..3, with byte 0 in
 bits 7..0. The same goes for the nonce and the data.
 
 ## How to use it
 
-1. Set the key, nonce and `counter0`, and keep the key and nonce fixed until
-   the message ends.
-2. Hold `start` for one clock.
+1. Set the key, nonce and `counter0`, and hold `start` for one clock. The
+   circuit stores them on that clock, so they're free to change afterwards.
+2. Wait for `in_ready`.
 3. Send the message words through `in_data` / `in_valid`, and set `in_last`
    on the last one. If the last word isn't full, `in_keep` says which bytes
    are valid. The ciphertext comes out on the same clock as each input word.
@@ -67,6 +68,11 @@ bits 7..0. The same goes for the nonce and the data.
 follows `out_ready`. With no pauses, a message of `W` words takes
 **10 + W clocks** from `start`.
 
+The block counter is 32 bits, so one message can use at most the blocks from
+`counter0` up to `0xffffffff`. If a message needs more, the circuit doesn't
+let the counter wrap around (that would reuse keystream). It stops with
+`in_ready = 0` and sets `error = 1` until `rst` and a new `start`.
+
 Example from RFC 8439 §2.4.2: key `00 01 02 … 1f`, nonce
 `00 00 00 00 00 00 00 4a 00 00 00 00`, `counter0 = 1`, and the first word of
 the text "Ladies and…" is `0x6964614c`. The first word that comes out is
@@ -74,7 +80,10 @@ the text "Ladies and…" is `0x6964614c`. The first word that comes out is
 
 ## Tests
 
-Each `.dig` file has a test. Run them with:
+Each `.dig` file has tests. `block_function.dig` and `core.dig` include all
+the ChaCha20 test vectors from RFC 8439 (§2.3.2, §2.4.2, Appendix A.1 and
+A.2), plus stalls, back-to-back messages and counter overflow. Run them
+with:
 
 ```sh
 for f in *.dig; do java -cp Digital.jar CLI test "$f"; done
@@ -86,4 +95,4 @@ for f in *.dig; do java -cp Digital.jar CLI test "$f"; done
 - https://en.wikipedia.org/wiki/ChaCha20-Poly1305
 - https://lnkd.in/p/emWu7Mmf
 - https://github.com/hneemann/Digital
-- https://github.com/hugoocoto/chacha2
+- https://github.com/hugoocoto/chacha20
